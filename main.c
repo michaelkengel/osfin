@@ -39,11 +39,19 @@ int main(int argc, char** argv) {
     
     char CommandLineInput[BUFFER_SIZE];
     
-    printf("%s\n", " _____________________________" );
-    printf("%s\n", "|                             |" );
-    printf("%s\n", "|     WELCOME TO MIKE SHELL   |" );
-    printf("%s\n", "|     Type 'Help' for help    |" );
-    printf("%s\n", "|_____________________________|" );
+    printf("%s\n", " _____________________________________________________________" );
+    printf("%s\n", "|.....////...////.////.///......///////////////.//////////....|" );
+    printf("%s\n", "|..../    //    /./  /./  /...../  /          /./        /....|" );
+    printf("%s\n", "|..../          /./  /./  /...../  /////  /////./   //////....|" );
+    printf("%s\n", "|..../  //  //  /./  /./  /...../  /.../  /...../        /....|" );
+    printf("%s\n", "|..../  /.//./  /./  /./  /////./  /.../  /...../   //////....|" );
+    printf("%s\n", "|..../  /..../  /./  /./      /./  /.../  /...../        /....|" );
+    printf("%s\n", "|....////....////.////.////////.////...////.....//////////....|" );
+    printf("%s\n", "|                      MikeLite Shell 1.4                     |" );
+    printf("%s\n", "|                                                             |" );
+    printf("%s\n", "|                  Operating Systems 575 SU '16               |" );
+    printf("%s\n", "|                                                             |" );
+    printf("%s\n", "|_____________________________________________________________|" );
     printf("%s\n", "\n" );
     
     while(1){
@@ -268,7 +276,7 @@ void allHist(){
     printf("%s \n"," ---- COMPLETE ---- ") ;
 }
 
-// Walk the history list and set terminators 
+// Walk the history list and set terminators
 void cleanHist(){
     for(int i = global_count; i < BUFFER_SIZE; i++){
         historyList[i] = '\0';
