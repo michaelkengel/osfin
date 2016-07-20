@@ -1,4 +1,3 @@
-//
 //  main.c
 //  finalproj
 //  Created by Mike on 6/01/16.
@@ -47,7 +46,7 @@ int main(int argc, char** argv) {
     printf("%s\n", "|..../  /.//./  /./  /./  /////./  /.../  /...../   //////....|" );
     printf("%s\n", "|..../  /..../  /./  /./      /./  /.../  /...../        /....|" );
     printf("%s\n", "|....////....////.////.////////.////...////.....//////////....|" );
-    printf("%s\n", "|                      MikeLite Shell 1.4                     |" );
+    printf("%s\n", "|                      MikeLite Shell 1.5                     |" );
     printf("%s\n", "|                                                             |" );
     printf("%s\n", "|                  Operating Systems 575 SU '16               |" );
     printf("%s\n", "|                                                             |" );
@@ -186,7 +185,7 @@ int main(int argc, char** argv) {
         }
            
         // HELP
-        else if(strcmp(CommandLineInput,"help")== 0){
+        else if(strcmp(parameterList[0],"help")== 0){
             printf("\nWelcome to MIKE SHELL\n");
             printf("_______________________\n");
             printf("Built-ins: \n");
