@@ -46,7 +46,7 @@ int main(int argc, char** argv) {
     printf("%s\n", "|..../  /.//./  /./  /./  /////./  /.../  /...../   //////....|" );
     printf("%s\n", "|..../  /..../  /./  /./      /./  /.../  /...../        /....|" );
     printf("%s\n", "|....////....////.////.////////.////...////.....//////////....|" );
-    printf("%s\n", "|                      MikeLite Shell 1.5                     |" );
+    printf("%s\n", "|                      MikeLite Shell 1.6                     |" );
     printf("%s\n", "|                                                             |" );
     printf("%s\n", "|                  Operating Systems 575 SU '16               |" );
     printf("%s\n", "|                                                             |" );
@@ -54,9 +54,6 @@ int main(int argc, char** argv) {
     printf("%s\n", "\n" );
     
     while(1){
-        
-        // Make sure all unused history is null terminator
-        cleanHist();
         
         // Jump marker
     linePrompt:
@@ -275,10 +272,8 @@ void allHist(){
     printf("%s \n"," ---- COMPLETE ---- ") ;
 }
 
-// Walk the history list and set terminators
-void cleanHist(){
-    for(int i = global_count; i < BUFFER_SIZE; i++){
-        historyList[i] = '\0';
-    }
-}
+
+
+
+
 
