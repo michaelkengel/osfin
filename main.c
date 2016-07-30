@@ -1,3 +1,4 @@
+//  MikeLite Shell v1.62
 //  main.c
 //  finalproj
 //  Created by Mike on 6/01/16.
@@ -47,10 +48,9 @@ int main(int argc, char** argv) {
     printf("%s\n", "|..../  /..../  /....../      /./  /.../  /...../        /....|" );
     printf("%s\n", "|....////....////......////////.////...////.....//////////....|" );
     printf("%s\n", "|-------------------------------------------------------------|" );
-    printf("%s\n", "|                     Mike-Lite Shell v1.61                   |" );
+    printf("%s\n", "|                     Mike-Lite Shell v1.62                   |" );
     printf("%s\n", "|                                                             |" );
     printf("%s\n", "|                 Operating Systems 575 SU '16                |" );
-    printf("%s\n", "|                                                             |" );
     printf("%s\n", "|_____________________________________________________________|" );
     printf("%s", "\n" );
     
@@ -98,6 +98,13 @@ int main(int argc, char** argv) {
         /*
           
         --------   COMMAND SELECTION   ----------
+         IMPLEMENT YOUR ADDITIONAL BUILD-IN COMMANDS BELOW USING THE FOLLOWING SYNTAX
+         
+         if((strcmp(parameterList[0], "YOUR FUNCTION") == 0){
+         Your execution block here for a hit
+         global_count++; Increment the global count THIS IS IMPORTANT FOR INDEXING
+         continue; Continue through next loop iteration
+         }
          
          */
             
