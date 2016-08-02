@@ -1,4 +1,4 @@
-//  MikeLite Shell v1-81.c
+//  MikeLite Shell v1-86.c
 //  main.c
 //  finalproj
 //  Created by Mike on 6/01/16.
@@ -32,7 +32,7 @@ void nHist();
 void errorThrow();
 int global_count;
 int histIndex;
-int rfEx;
+int histMark;
 
 
 /* MAIN SHELL LOOP */
@@ -50,7 +50,7 @@ int main(int argc, char** argv) {
     printf("%s\n", "|..../  /..../  /....../      /./  /.../  /...../        /....|" );
     printf("%s\n", "|....////....////......////////.////...////.....//////////....|" );
     printf("%s\n", "|-------------------------------------------------------------|" );
-    printf("%s\n", "|                     Mike Shell v1.81                        |" );
+    printf("%s\n", "|                     Mike Shell v1.86                        |" );
     printf("%s\n", "|                                                             |" );
     printf("%s\n", "|                 Operating Systems 575 SU '16                |" );
     printf("%s\n", "|_____________________________________________________________|" );
@@ -67,7 +67,6 @@ int main(int argc, char** argv) {
         // Line prompt set and print
         char* linePromt = "ME> ";
         fputs(linePromt, stdout);
-        rfEx = 0;
         fflush(stdout);
     
         
@@ -78,14 +77,14 @@ int main(int argc, char** argv) {
                 *nextln = '\0';
         }
         
-        // Blank space entered bug fix
-        if(CommandLineInput[0] == ' '){
-            continue;
-        }
         
         // MAKE SURE BUFFER IS NOT EMPTY
-        if(CommandLineInput[0] != '\0'){
+        if (CommandLineInput[0] == '\0' || CommandLineInput[0] == ' '){
+            continue;
+        }
+        else{
             // CHECK IF HISTORY COMMAND
+            histMark = 0;
             if (CommandLineInput[0] == '!'){
                 parseStringNoHist(CommandLineInput);
                 global_count--;
@@ -114,7 +113,7 @@ int main(int argc, char** argv) {
                     historySave = (char*) malloc(sizeof(linecopy));
                     strcpy(historySave,linecopy);
                     parseStringNoHist(linecopy);
-                    rfEx = 1;
+                    histMark = 1;
                 }
             }
             // ELSE IF NOT HISTORY COMMAND, PARSE NORMALLY
@@ -201,10 +200,10 @@ int main(int argc, char** argv) {
         // GO TO EXECUTE IF NONE HIT
         execute();
         global_count++;
-            if (rfEx == 1){
+            if (histMark == 1){
                 // Correct records for skipped history
                 historyList[histIndex-1] = historySave;
-                rfEx = 0;
+                histMark = 0;
             }
         }
     }
