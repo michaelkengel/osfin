@@ -1,4 +1,4 @@
-//  MikeLite Shell v1-86.c
+//  MikeLite Shell v1-9.c
 //  main.c
 //  finalproj
 //  Created by Mike on 6/01/16.
@@ -50,7 +50,7 @@ int main(int argc, char** argv) {
     printf("%s\n", "|..../  /..../  /....../      /./  /.../  /...../        /....|" );
     printf("%s\n", "|....////....////......////////.////...////.....//////////....|" );
     printf("%s\n", "|-------------------------------------------------------------|" );
-    printf("%s\n", "|                     Mike Shell v1.86                        |" );
+    printf("%s\n", "|                     Mike Shell v1.9                         |" );
     printf("%s\n", "|                                                             |" );
     printf("%s\n", "|                 Operating Systems 575 SU '16                |" );
     printf("%s\n", "|_____________________________________________________________|" );
@@ -231,27 +231,32 @@ void parseStringNoHist(char* inputLine){
     }
 }
 
-// NEED TO CHANGE
 int execute(){
-    pid_t pid, wpid;
+    pid_t process_ID;
+    process_ID = fork();
+    pid_t wait_ID;
     int isRunning;
-    pid = fork();
-    if (pid == 0){ // Child process
+    // FORK ERROR
+    if (process_ID < 0){
+        errorThrow();
+        return 0;
+    }
+    // CHILD PROCESS FORK
+    else if (process_ID == 0){
+        // Execute
         if (execvp(parameterList[0], parameterList) == -1){
             errorThrow();
         }
-        exit(EXIT_FAILURE);
+        exit(EXIT_SUCCESS);
     }
-    else if (pid < 0){ // Fork error
-        errorThrow();
-    }
-    else{ // Parent process
+    else{
+    // WAIT FOR CHILD
         do {
             // Wait on proccess: WUNTRACED->
             // The status of any child processes specified by pid that are stopped,
             // and whos status has not yet been reported since they stopped,
             // shall also be reported to the requesting process.
-            wpid = waitpid(pid, &isRunning, WUNTRACED);
+            wait_ID = waitpid(process_ID, &isRunning, WUNTRACED);
             // While there is no exited (WIFEXITED) or terminated by signal (WIFSIGNALED)
         } while (!WIFEXITED(isRunning) && !WIFSIGNALED(isRunning));
     }
